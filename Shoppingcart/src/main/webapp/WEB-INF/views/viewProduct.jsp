@@ -21,6 +21,8 @@
    <td><a href="deleteProduct/${product.productId}">Delete</a></td>  
      
    </tr>  
+   
+   
    </c:forEach>  
    </table>  
    <br/>  

@@ -9,8 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Add New Product</h1>  
-       <form:form method="post" action="psave">    
+<h1>Add New Product</h1> 
+
+
+ 
+       
+        <form:form  enctype="multipart/form-data" action="psave">
+
+        
         <table >    
          <tr>    
           <td>Product Name : </td>   
@@ -21,8 +27,8 @@
           <td><form:input path="productDescription" /></td>  
          </tr>   
          <tr>    
-          <td>Product Image :</td>    
-          <td><form:input path="productImage" /></td>  
+            
+          <td><form:hidden path="productImage" /></td>  
          </tr> 
          <tr>    
           <td>Product Price :</td>    
@@ -34,6 +40,12 @@
          </tr> 
          <tr>    
           <td> </td>    
+          <tr><td><form:hidden path="productImage"/></td>
+</tr>
+<tr><td>Choose Image</td><td><input type="file" name="file"/></td></tr>
+          
+          
+          
           <td><input type="submit" value="Save" /></td>    
          </tr>    
         </table>    

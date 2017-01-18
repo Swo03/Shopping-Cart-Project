@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product {
@@ -21,6 +24,11 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name="categoryId")
 	private Category productCategory;
+	
+	@Transient
+	private MultipartFile file;
+		
+		
 
 	public int getProductId() {
 		return productId;

@@ -11,6 +11,7 @@
 
 ${product.productName}
 ${product.productPrice}
+<img src="${pageContext.request.contextPath}/${product.productImage}">
 
 </body>
 </html>
