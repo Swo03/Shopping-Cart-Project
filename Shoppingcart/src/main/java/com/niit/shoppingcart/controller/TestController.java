@@ -25,7 +25,7 @@ public class TestController {
 	{
 		
 		ModelAndView mv=new ModelAndView("header");
-		mv.addObject("categoryList", categoryDao.list());
+		mv.addObject("categoryList", categoryDao.getAllCategory());
 		return mv;
 	}
 	

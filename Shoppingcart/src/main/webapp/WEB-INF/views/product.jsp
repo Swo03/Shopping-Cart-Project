@@ -11,7 +11,7 @@
 
 ${product.productName}
 ${product.productPrice}
-<img src="${pageContext.request.contextPath}/${product.productImage}">
+<img src="${pageContext.request.contextPath}/${product.productImage}"  height="100" width="100">
 
 </body>
 </html>
