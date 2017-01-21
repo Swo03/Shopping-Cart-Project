@@ -41,7 +41,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
                   
                  <value>  com.niit.shoppingcart.model.Category</value>
                  <value>com.niit.shoppingcart.model.Product</value>
-                  
+                  <value>com.niit.shoppingcart.model.User</value>
             </list>
       </property>
 </bean>

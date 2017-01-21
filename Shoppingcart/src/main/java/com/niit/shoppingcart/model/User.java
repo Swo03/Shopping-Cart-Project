@@ -28,17 +28,7 @@ public class User implements Serializable{
 	private String role;
 	private boolean enabled;
 	
-	@OneToOne
-	@JoinColumn(name="billingAddressId")
-	BillingAddress billingAddress;
 	
-	
-	@OneToMany(mappedBy="user")
-	List<UserOrder> order;
-	
-	@OneToOne
-	@JoinColumn(name="cartId")
-	Cart cart;
 
 	public String getUserId() {
 		return userId;
@@ -80,29 +70,7 @@ public class User implements Serializable{
 		this.enabled = enabled;
 	}
 
-	public BillingAddress getBillingAddress() {
-		return billingAddress;
-	}
-
-	public void setBillingAddress(BillingAddress billingAddress) {
-		this.billingAddress = billingAddress;
-	}
-
-	public List<UserOrder> getOrder() {
-		return order;
-	}
-
-	public void setOrder(List<UserOrder> order) {
-		this.order = order;
-	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
+	
 	
 	
 
