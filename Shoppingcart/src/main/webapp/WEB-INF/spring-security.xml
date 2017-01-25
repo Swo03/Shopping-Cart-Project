@@ -18,11 +18,17 @@ xmlns:beans="http://www.springframework.org/schema/beans"
         <intercept-url pattern="/contact" access="isAnonymous()" />
         <intercept-url pattern="/register" access="isAnonymous()" />
         <intercept-url pattern="/login" access="isAnonymous()" />
-        <intercept-url pattern="/logout" access="isAnonymous()" />
- 
+        <intercept-url pattern="/categoryEditForm" access="hasRole('ROLE_ADMIN')" />
+ 		 <intercept-url pattern="/categoryForm" access="hasRole('ROLE_ADMIN')" />
+ 		  <intercept-url pattern="/cindex" access="hasRole('ROLE_ADMIN')" />
+ 		   <intercept-url pattern="/pindex" access="hasRole('ROLE_ADMIN')" />
+ 		    <intercept-url pattern="/productForm" access="hasRole('ROLE_ADMIN')" />
+ 		    
+ 		
+ 		
  		<intercept-url pattern="/buyproduct" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/home"
-            access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+            access="isAnonymous()" />
             <intercept-url pattern="/profile"
             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 	<intercept-url pattern="/viewdetail"

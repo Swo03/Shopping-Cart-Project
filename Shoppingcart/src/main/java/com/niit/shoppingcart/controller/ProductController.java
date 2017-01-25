@@ -101,9 +101,9 @@ try{
 product.setProductImage(productImage);
 
 productDao.addProduct(product);
+
 return new ModelAndView("redirect:/viewProduct");
 }
-
 
 
 }

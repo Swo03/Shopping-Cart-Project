@@ -29,7 +29,9 @@
           <td>Product Description</td>    
           <td><form:input path="productDescription" /></td>  
          </tr> 
-         
+        
+<tr><td>Choose Image</td><td><input type="file" name="file"/></td></tr>
+          
            
          <tr>    
           <td> </td>    

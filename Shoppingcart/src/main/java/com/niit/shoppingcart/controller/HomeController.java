@@ -1,59 +1,57 @@
-/*package com.niit.shoppingcart.controller;
+package com.niit.shoppingcart.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.shoppingcart.dao.CategoryDao;
+import com.niit.shoppingcart.dao.ProductDao;
 
 @Controller
 public class HomeController {
-
-	@RequestMapping(value = "/")
-	public ModelAndView home() {
-		ModelAndView mv = new ModelAndView("home");
+	@Autowired
+	CategoryDao  categoryDao;
+	@Autowired
+	ProductDao  productDao;
+	@RequestMapping("/Test")
+	public String test()
+	{
+		return "header";
+	}
+	@RequestMapping("/home")
+	public ModelAndView home()
+	{
+		
+		ModelAndView mv=new ModelAndView("home");
+		mv.addObject("categoryList", categoryDao.getAllCategory());
 		return mv;
 	}
-
-	@RequestMapping(value="/login")
-	public ModelAndView loginPage()
 	
+	@RequestMapping("/showCategoryWiseProducts/{categoryId}")
+	public ModelAndView  showCategoryWiseProducts(@PathVariable  int categoryId)
 	{
-		ModelAndView mv=new ModelAndView("login");
-		mv.addObject("msg", "This the login page");
-		mv.addObject("loginPage", "true");
+		ModelAndView mv=new ModelAndView("products");
+		mv.addObject("productList", productDao.listByCategoryId(categoryId));
+		
 		return mv;
-		}
-
-	@RequestMapping(value = "/registration")
-	public ModelAndView registrationPage() {
-		ModelAndView mv = new ModelAndView("registration");
-		mv.addObject("msg", "This is the registration page");
-		mv.addObject("registrationPage", "true");
+	}
+	
+	@RequestMapping("/product/{productId}")
+	public ModelAndView  products(@PathVariable  int productId)
+	{
+		ModelAndView mv=new ModelAndView("product");
+		mv.addObject("product", productDao.listByProductId(productId));
+		
 		return mv;
+	}
+	
+	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+	public ModelAndView loginPage() {
 
-	}
-
-	@RequestMapping("/validate")
-	public ModelAndView validate(@RequestParam("id") String id, @RequestParam("password") String password)
-	{ System.out.println("In Validate method");
-	System.out.println("id:" + id);
-	System.out.println("Password:" + password);
-	ModelAndView mv= new ModelAndView("home");
-	
-	
-	UserDAO userDAO = new UserDAOImpl;
-	if(UserDAO.isValid(id,password)==true)
-	{
-		mv.addObject("successMsg", "You have logged in successfully");
-	}
-	else
-	{
-		mv.addObject("errorMsg", "Invalid credentials.Please try again");
-	
-	}
-	return mv;
+		return new ModelAndView("loginPage");
 	}
 	
 }
-*/
