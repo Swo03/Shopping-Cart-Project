@@ -21,14 +21,24 @@ public class HomeController {
 	{
 		return "header";
 	}
-	@RequestMapping("/home")
+	@RequestMapping("/index")
 	public ModelAndView home()
 	{
 		
-		ModelAndView mv=new ModelAndView("home");
+		ModelAndView mv=new ModelAndView("index");
 		mv.addObject("categoryList", categoryDao.getAllCategory());
 		return mv;
 	}
+	
+	@RequestMapping("/home")
+	public ModelAndView home1()
+	{
+		
+		ModelAndView mv=new ModelAndView("index");
+		mv.addObject("categoryList", categoryDao.getAllCategory());
+		return mv;
+	}
+	
 	
 	@RequestMapping("/showCategoryWiseProducts/{categoryId}")
 	public ModelAndView  showCategoryWiseProducts(@PathVariable  int categoryId)

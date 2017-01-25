@@ -62,16 +62,46 @@ public ModelAndView edit(@PathVariable int id){
 
 
 @RequestMapping(value="/peditsave",method = RequestMethod.POST) 
-public ModelAndView productSave(@ModelAttribute("product") Product product){  
+public ModelAndView productSave(@ModelAttribute("product") Product product, HttpServletRequest request, @RequestParam("file") MultipartFile file){  
+	if(file.getSize()!=0){
+	byte fileBytes[];
+	FileOutputStream fos=null;
+
+	String fileName="";
+	String productImage="";
+	ServletContext context=request.getServletContext();
+	String realContextPath=context.getRealPath("/");
+	String un= product.getProductName();
+	if(file !=null){
+		fileName=realContextPath+"/resources/img/"+un+".jpg";
+		productImage="resources/img/"+un+".jpg";
+		System.out.println("===="+fileName+"====");
+		
+	File fileobj=new File(fileName);
+	try{
+		fos=new FileOutputStream(fileobj);
+		fileBytes=file.getBytes();
+		fos.write(fileBytes);
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	product.setProductImage(productImage);
+	}
+	}
 	productDao.updateProduct(product);
-    return new ModelAndView("redirect:/viewProduct");  
-}  
+    return new ModelAndView("redirect:/viewProduct");
+	
+	
+	
+}
 @RequestMapping(value="/deleteProduct/{id}",method = RequestMethod.GET)  
 public ModelAndView delete(@PathVariable int id){ 
 	System.out.println("delete is called");
    productDao.deleteProduct(id);
     return new ModelAndView("redirect:/viewProduct");  
 }  
+
+
 
 @RequestMapping(value="/psave",method=RequestMethod.POST)
 public ModelAndView save(@ModelAttribute("product")Product product, HttpServletRequest request, @RequestParam("file") MultipartFile file){

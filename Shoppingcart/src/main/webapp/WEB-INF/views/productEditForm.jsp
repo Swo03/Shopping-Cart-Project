@@ -10,7 +10,9 @@
 </head>
 <body>
  <h1>Edit Product</h1>  
-       <form:form method="POST" action="/Shoppingcart/peditsave">    
+ 
+   
+       <form:form method="POST" enctype="multipart/form-data" action="/Shoppingcart/peditsave">    
         <table >    
         <tr>  
         <td></td>    
@@ -24,12 +26,17 @@
           <td>Product Price</td>    
           <td><form:input path="productPrice" /></td>  
          </tr>   
-          
+          <tr>    
+          <td>Category Id :</td>    
+          <td><form:input path="productCategory.categoryId" /></td>  
+         </tr> 
           <tr>    
           <td>Product Description</td>    
           <td><form:input path="productDescription" /></td>  
          </tr> 
-        
+        <tr><td><form:hidden path="productImage"/></td>
+        <img src="${pageContext.request.contextPath}/${product.productImage}"  height="100" width="100">
+</tr>
 <tr><td>Choose Image</td><td><input type="file" name="file"/></td></tr>
           
            
