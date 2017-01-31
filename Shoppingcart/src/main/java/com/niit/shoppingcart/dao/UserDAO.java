@@ -10,5 +10,7 @@ public User get(String id);
 public User validate(String id,String password);
 public boolean save(User user);
 public boolean update(User user);
+public User getUserbyId(String id);
+
 
 }

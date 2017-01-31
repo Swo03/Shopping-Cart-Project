@@ -56,6 +56,18 @@ public class CartItem implements Serializable{
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+
+	public void setQuantity(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getQuantity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	
 	
 

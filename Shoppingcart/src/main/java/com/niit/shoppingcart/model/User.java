@@ -29,6 +29,45 @@ public class User implements Serializable{
 	private boolean enabled;
 	
 	
+	@OneToOne
+	@JoinColumn(name="cartId")
+	Cart cart;
+	
+	@OneToOne
+	@JoinColumn(name="billingAddressId")
+	BillingAddress billingAddress;
+	
+	@OneToMany(mappedBy="user")
+	List<UserOrder> orders;
+	
+	
+	
+	
+	
+
+	protected Cart getCart() {
+		return cart;
+	}
+
+	protected void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	protected BillingAddress getBillingAddress() {
+		return billingAddress;
+	}
+
+	protected void setBillingAddress(BillingAddress billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
+	protected List<UserOrder> getOrders() {
+		return orders;
+	}
+
+	protected void setOrders(List<UserOrder> orders) {
+		this.orders = orders;
+	}
 
 	public String getUserId() {
 		return userId;
