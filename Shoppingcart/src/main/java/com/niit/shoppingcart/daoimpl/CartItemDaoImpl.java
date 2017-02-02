@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.shoppingcart.dao.CartItemDao;
 import com.niit.shoppingcart.model.CartItem;
 
-@EnableTransactionManagement
+@Transactional
 @Repository("cartItemDao")
 public class CartItemDaoImpl implements CartItemDao {
 
@@ -42,7 +42,12 @@ public class CartItemDaoImpl implements CartItemDao {
 		
 	public boolean saveOrUpdate(CartItem cartItem) {
 	try{
-		sessionFactory.getCurrentSession().saveOrUpdate(cartItem);
+		
+		Session session=sessionFactory.openSession();
+		sessionFactory.openSession().saveOrUpdate(cartItem);
+		session.flush();
+		session.close();
+
 		return true;
 	}catch(Exception e){
 		e.printStackTrace();

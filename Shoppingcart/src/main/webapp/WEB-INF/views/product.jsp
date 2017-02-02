@@ -46,7 +46,7 @@ margin:0 0 0 50px;
     <div id="right">
       <b>Price: ${product.productPrice}</b> 
     </div>
-    
+    <a href="${pageContext.request.contextPath}/addItem/${product.productId}">Add to Cart</a>
 </div>
 
 

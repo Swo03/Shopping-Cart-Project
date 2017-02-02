@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,22 +25,22 @@ import com.niit.shoppingcart.model.User;
 @Controller
 public class CartController {
 	@Autowired
-CartDao cartDao;
-	@Autowired
-	Cart cart;
+	CartDao cartDao;
+	/*@Autowired
+	Cart cart;*/
 	@Autowired
 	CartItemDao cartItemDao;
 	@Autowired
 	UserDAO userDao;
 	@Autowired
 	ProductDao productDao;
-	@Autowired
-	CartItem cartItem;
+	/*@Autowired
+	CartItem cartItem;*/
 	
 	@RequestMapping("/viewCart")
 	public ModelAndView viewProduct(HttpSession session){
-		ModelAndView mv=new ModelAndView("cart");
-		Cart cart=(Cart) session.getAttribute("cart");
+		ModelAndView mv=new ModelAndView("viewCart");
+		Cart cart=(Cart) session.getAttribute("viewCart");
 		if (cart==null)
 		{
 			mv.addObject("errMsg","No Items in Cart");
@@ -63,7 +64,7 @@ CartDao cartDao;
 	
 	@RequestMapping("/addItem/{productId}")
 	public ModelAndView addItemsToCart(@PathVariable int productId,Principal principal,HttpSession session){
-		ModelAndView mv=new ModelAndView("Product");
+		ModelAndView mv=new ModelAndView("redirect:/viewCart");
 		String id=principal.getName();
 		System.out.println("Logged in users"+id);
 		Product product=productDao.listByProductId(productId);
@@ -87,7 +88,7 @@ CartDao cartDao;
 			
 			
 		
-		return mv;
+			return mv;
 		
 		
 	}
@@ -123,6 +124,11 @@ CartDao cartDao;
 	updateCart(item);
 	session.setAttribute("cart", item.getCart());
 	return mv;
+	}
+
+	private ModelAndView mv(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 	
