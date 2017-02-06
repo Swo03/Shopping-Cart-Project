@@ -42,7 +42,7 @@ return null;
 	}
 
 	public User get(String id) {
-		// TODO Auto-generated method stub
+		
 		return (User) sessionFactory.getCurrentSession().get(User.class,id);
 	}
 
@@ -54,25 +54,31 @@ return null;
 		this.sessionFactory = sessionFactory;
 	}
 
-	public User validate(String id, String password) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean save(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean update(User user) {
-		sessionFactory.getCurrentSession().update(user);
-		
-		return false;
-	}
+	
+	
 
 	public User getUserbyId(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=getSession();
+		return (User) session.get(User.class, id);
+		
 	}
+
+	public boolean saveOrUpdate(User user) {
+		try{
+			Session session=sessionFactory.openSession();
+			session.saveOrUpdate(user);
+			session.flush();
+			session.close();
+			return true;
+		}catch(Exception e){
+			return false;	
+		}
+		
+	}
+
+	
+	
+	
+	
 
 }

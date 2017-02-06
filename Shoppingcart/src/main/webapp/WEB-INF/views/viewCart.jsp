@@ -9,23 +9,30 @@
 <title>Cart</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
+ 
+${errMsg} 
+<c:if test="${empty errMsg}">
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Product Name</th><th>Price</th></tr>  
-   <c:forEach var="product" items="${list}">   
+<tr><th></th><th>Name</th></tr>  
+   <c:forEach var="cartItem" items="${cartContent}">   
    <tr>  
-   <td>${product.productName}</td>  
-   <td>${cart.GrandTotal}</td>  
-    
-  <td><a href="delete/${cartItem.cartId}">remove</a></td>  
-     
-     
-   </tr>  
-   
-   
-   </c:forEach>  
-   </table>  
-   <br/>  
   
+   <td>${cartItem.product.productName}</td>  <td><a href="${pageContext.request.contextPath}/removeItem/${cartItem.cartItemId}">Delete</a></td>  
+       
+  
+     
+   
+   </tr>  
+   </c:forEach>
+  
+   </table>  
+    <c:if test="${grandTotal > 0}">
+   Total   : ${grandTotal} 
+   </c:if>
+   
+   </c:if>
+
 
 </body>
 </html>

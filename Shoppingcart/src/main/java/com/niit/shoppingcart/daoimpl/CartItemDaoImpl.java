@@ -44,7 +44,7 @@ public class CartItemDaoImpl implements CartItemDao {
 	try{
 		
 		Session session=sessionFactory.openSession();
-		sessionFactory.openSession().saveOrUpdate(cartItem);
+		session.saveOrUpdate(cartItem);
 		session.flush();
 		session.close();
 
@@ -96,7 +96,10 @@ public class CartItemDaoImpl implements CartItemDao {
 	@Transactional
 	public List<CartItem> getCartItemByUserId(String userId) {
 		String hql= "from CartItem where cart.user.userId="+"'"+userId+"'";
-		Query query= sessionFactory.getCurrentSession().createQuery(hql);
+		Session session=sessionFactory.openSession();
+		Query query= session.createQuery(hql);
+		session.flush();
+		session.close();
 		
 		return query.list();
 	}

@@ -16,7 +16,15 @@ public class CartItem implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartItemId;
 	private double subTotal;
-	
+	private int quantity;
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	@OneToOne
 	@JoinColumn(name="productId")
 	Product product;
@@ -57,15 +65,7 @@ public class CartItem implements Serializable{
 		this.cart = cart;
 	}
 
-	public void setQuantity(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public int getQuantity() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 
 	

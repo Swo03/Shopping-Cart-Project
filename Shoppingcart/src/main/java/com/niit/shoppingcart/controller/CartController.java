@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +41,7 @@ public class CartController {
 	@RequestMapping("/viewCart")
 	public ModelAndView viewProduct(HttpSession session){
 		ModelAndView mv=new ModelAndView("viewCart");
-		Cart cart=(Cart) session.getAttribute("viewCart");
+		Cart cart=(Cart) session.getAttribute("cart");
 		if (cart==null)
 		{
 			mv.addObject("errMsg","No Items in Cart");
@@ -60,6 +61,14 @@ public class CartController {
 		c1.setGrandTotal(c1.getGrandTotal()+cartItem.getProduct().getProductPrice());
 		cartDao.saveOrUpdate(c1);
 		}
+
+	private void updateCartAgain(CartItem cartItem)
+	{
+		Cart c1=cartItem.getCart();
+		c1.setGrandTotal(c1.getGrandTotal()+cartItem.getProduct().getProductPrice());
+		cartDao.saveOrUpdate(c1);
+		
+	}
 	
 	
 	@RequestMapping("/addItem/{productId}")
@@ -76,6 +85,9 @@ public class CartController {
 			User user=userDao.getUserbyId(id);
 			c.setUser(user);
 			cartDao.saveOrUpdate(c);
+			user.setCart(c);
+			userDao.saveOrUpdate(user);
+			cartDao.saveOrUpdate(c);
 			
 			CartItem cartItem=new CartItem();
 			cartItem.setCart(c);
@@ -85,7 +97,9 @@ public class CartController {
 			cartItemDao.saveOrUpdate(cartItem);
 			updateCart(cartItem);
 			session.setAttribute("cart", cartItem.getCart());
-			
+			 Cart c1=cartItem.getCart();
+			 c1.setGrandTotal(c1.getGrandTotal()+cartItem.getSubTotal());
+		     cartDao.saveOrUpdate(c1);
 			
 		
 			return mv;
@@ -126,11 +140,30 @@ public class CartController {
 	return mv;
 	}
 
-	private ModelAndView mv(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	@RequestMapping("/removeItem/{cartItemId}")
+	public String removeCartItems(@PathVariable("cartItemId") String cartItemId, Model model, Principal username,HttpSession session) {
+		System.out.println("delete from cartitem method...");
+		
+		CartItem cartItem = cartItemDao.get(cartItemId);
+		
+		System.out.println("deletexxx from cartitem method...");
+		
+		
+		
+		System.out.println("before delete method");
+		updateCartAgain(cartItem);
+		session.setAttribute("cart", cartItem.getCart());
+		cartItemDao.delete(cartItem);
+		
+		System.out.println("after delete method");
+		
+	
+		return "redirect:/viewCart";
 	}
+	
 }
+
 	
 	
 	

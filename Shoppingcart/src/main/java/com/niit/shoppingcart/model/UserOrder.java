@@ -18,7 +18,17 @@ public class UserOrder implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	private Date dateOfOrder;
+	private  int orderId;
 	
+	
+	protected int getOrderId() {
+		return orderId;
+	}
+
+	protected void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="id")
 	User user;

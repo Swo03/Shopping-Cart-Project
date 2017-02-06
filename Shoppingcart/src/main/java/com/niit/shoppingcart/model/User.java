@@ -45,27 +45,27 @@ public class User implements Serializable{
 	
 	
 
-	protected Cart getCart() {
+	public Cart getCart() {
 		return cart;
 	}
 
-	protected void setCart(Cart cart) {
+	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
 
-	protected BillingAddress getBillingAddress() {
+	public BillingAddress getBillingAddress() {
 		return billingAddress;
 	}
 
-	protected void setBillingAddress(BillingAddress billingAddress) {
+	public void setBillingAddress(BillingAddress billingAddress) {
 		this.billingAddress = billingAddress;
 	}
 
-	protected List<UserOrder> getOrders() {
+	public List<UserOrder> getOrders() {
 		return orders;
 	}
 
-	protected void setOrders(List<UserOrder> orders) {
+	public void setOrders(List<UserOrder> orders) {
 		this.orders = orders;
 	}
 

@@ -47,10 +47,11 @@ public class CartDaoImpl implements CartDao{
 	public boolean saveOrUpdate(Cart cart) {
 		try{
 			Session session=sessionFactory.openSession();
-			sessionFactory.openSession().saveOrUpdate(cart);
+			
+			session.saveOrUpdate(cart);
 			session.flush();
 			session.close();
-
+            
 			
 			return true;
 		}catch(Exception e){
