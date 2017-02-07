@@ -16,9 +16,10 @@ padding:20px 150px 0 450px;
 
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <div id="position"><c:forEach  items="${productList}"  var="product">
      <li>
-      <img src="${pageContext.request.contextPath}/${product.productImage}"  height="100" width="100">
+      <img src="${pageContext.request.contextPath}/${product.productImage}"  height="200" width="100">
       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
      <a href="${pageContext.request.contextPath}/product/${product.productId}">${product.productName}</a>
      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

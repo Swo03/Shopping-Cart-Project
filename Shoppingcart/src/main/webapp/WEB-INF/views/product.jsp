@@ -16,7 +16,6 @@ margin:0 0 0 50px;
     margin:0 auto;
     overflow: hidden
 }
-
 #left {
     float:left;
    
@@ -35,7 +34,7 @@ margin:0 0 0 50px;
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<h3 style="text-align:center;">${product.productName}</h3>
+<h2 style="text-align:center;">${product.productName}</h2>
 
 <div id="container">
 
@@ -45,8 +44,14 @@ margin:0 0 0 50px;
 
     <div id="right">
       <b>Price: ${product.productPrice}</b> 
+  <br> <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="${pageContext.request.contextPath}/addItem/${product.productId}"><h4>Add to Cart</h4></a>
     </div>
-    <a href="${pageContext.request.contextPath}/addItem/${product.productId}">Add to Cart</a>
+    
 </div>
 
 
