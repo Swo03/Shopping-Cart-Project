@@ -39,9 +39,13 @@ public class CartController {
 	CartItem cartItem;*/
 	
 	@RequestMapping("/viewCart")
-	public ModelAndView viewProduct(HttpSession session){
+	public ModelAndView viewProduct(HttpSession session, Principal user){
+		
+		//String id=user.getName();
 		ModelAndView mv=new ModelAndView("viewCart");
 		Cart cart=(Cart) session.getAttribute("cart");
+		String id=cart.getUser().getUserId();
+		
 		if (cart==null)
 		{
 			mv.addObject("errMsg","No Items in Cart");
@@ -49,7 +53,8 @@ public class CartController {
 		}
 		else
 		{
-			mv.addObject("cartContent", cart.getCartItems());
+			
+			mv.addObject("cartContent", cartItemDao.getCartItemByUserId(id));
 			mv.addObject("grandTotal",cart.getGrandTotal());
 			
 		}
@@ -65,7 +70,7 @@ public class CartController {
 	private void updateCartAgain(CartItem cartItem)
 	{
 		Cart c1=cartItem.getCart();
-		c1.setGrandTotal(c1.getGrandTotal()+cartItem.getProduct().getProductPrice());
+		c1.setGrandTotal(c1.getGrandTotal()-cartItem.getSubTotal());
 		cartDao.saveOrUpdate(c1);
 		
 	}
@@ -85,7 +90,10 @@ public class CartController {
 			User user=userDao.getUserbyId(id);
 			c.setUser(user);
 			cartDao.saveOrUpdate(c);
-			user.setCart(c);
+			Cart c1=cartDao.getCartByUserId(id);
+			System.out.println("G Tot"+c1.getCartId());
+			user=userDao.getUserbyId(id);
+			user.setCart(c1);
 			userDao.saveOrUpdate(user);
 			cartDao.saveOrUpdate(c);
 			
@@ -95,12 +103,12 @@ public class CartController {
 			cartItem.setQuantity(1);
 			cartItem.setSubTotal(product.getProductPrice());
 			cartItemDao.saveOrUpdate(cartItem);
-			updateCart(cartItem);
-			session.setAttribute("cart", cartItem.getCart());
-			 Cart c1=cartItem.getCart();
-			 c1.setGrandTotal(c1.getGrandTotal()+cartItem.getSubTotal());
-		     cartDao.saveOrUpdate(c1);
+			//updateCart(cartItem);
 			
+			 Cart c2=cartItem.getCart();
+			 c2.setGrandTotal(c2.getGrandTotal()+cartItem.getSubTotal());
+		     cartDao.saveOrUpdate(c2);
+		     session.setAttribute("cart", cartItem.getCart());
 		
 			return mv;
 		

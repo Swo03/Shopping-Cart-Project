@@ -15,9 +15,18 @@
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 100%;
-      max-height:300px;
+      max-height:500px;
       margin: auto;
   }
+  
+   
+    footer {
+     
+      padding: 25px;
+    }
+    
+   
+ 
   </style>
 
   
@@ -32,7 +41,7 @@
    <!-- Carousel items -->
    <div class = "carousel-inner">
       <div class = "item active">
-         <img src = "resources/carousel/i_phone.jpg" alt = "First slide">
+         <img src = "resources/carousel/moto.jpg" alt = "First slide">
       </div>
       
       <div class = "item">
@@ -40,7 +49,7 @@
       </div>
       
       <div class = "item">
-         <img src = "resources/carousel/moto.jpg" alt = "Third slide">
+         <img src = "resources/carousel/i_phone.jpg" alt = "Third slide">
       </div>
       
       
@@ -57,7 +66,34 @@
    <a class = "carousel-control right" href = "#myCarousel" data-slide = "next">&rsaquo;</a>
    
 </div> 
+<div class="container text-center">    
+  <h3>Deal of the Day</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="resources/carousel/lenovo-p2.jpg" class="img-responsive"  style="width:100%" alt="Image">
+      <p>Lenovo P2</p>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="resources/carousel/pixel1.png" class="img-responsive" style="width:100%" alt="Image">
+      <p>Google Pixel</p>    
+    </div>
+    <div class="col-sm-4">
+      <div class="alert alert-success">
+       <p>Best Bargains</p>
+      </div>
+      <div class="alert alert-info">
+       <p>
+  <strong>Hurry!!</strong> For limited time only...
+</p>
+      </div>
+    </div>
+  </div>
+</div><br>
 
+
+<footer class="container-fluid text-center">
+  <p >Shopping Cart</p>
+</footer>
 
 
 </body>

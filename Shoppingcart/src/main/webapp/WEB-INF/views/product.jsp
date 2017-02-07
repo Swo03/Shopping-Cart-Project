@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>${product.productName}</title>
 <style>
 img{
 margin:0 0 0 50px;
@@ -20,7 +20,7 @@ margin:0 0 0 50px;
     float:left;
    
     width:30%;
-   
+  
 }
 
 #right{
@@ -29,6 +29,8 @@ margin:0 0 0 50px;
     width:50%;
     margin:150px 0 0 250px;
 }
+
+
 
 </style>
 </head>
@@ -49,7 +51,8 @@ margin:0 0 0 50px;
   <br>
   <br>
   <br>
-  <a href="${pageContext.request.contextPath}/addItem/${product.productId}"><h4>Add to Cart</h4></a>
+   
+   <a href="${pageContext.request.contextPath}/addItem/${product.productId}" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a>
     </div>
     
 </div>

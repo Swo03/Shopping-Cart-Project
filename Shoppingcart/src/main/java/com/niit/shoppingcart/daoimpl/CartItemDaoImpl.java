@@ -73,7 +73,7 @@ public class CartItemDaoImpl implements CartItemDao {
 	}
 	}
 	public CartItem get(String cartItemId) {
-		String hql= "from cartItem where cartItemId="+"'"+ cartItemId+"'";
+		String hql= "from CartItem where cartItemId="+"'"+ cartItemId+"'";
 		Session session=sessionFactory.openSession();
 		Query query= session.createQuery(hql);
 		
@@ -98,10 +98,25 @@ public class CartItemDaoImpl implements CartItemDao {
 		String hql= "from CartItem where cart.user.userId="+"'"+userId+"'";
 		Session session=sessionFactory.openSession();
 		Query query= session.createQuery(hql);
+		
+		
+		List<CartItem> list=query.list();
 		session.flush();
 		session.close();
 		
-		return query.list();
+		if(list==null){
+			return null;
+			
+		}else{
+			return list;
+		}
+		
+		
 	}
+	
+	
+	
+	
+	
 
 }

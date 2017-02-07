@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 public class CartItem implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int cartItemId;
+	private String cartItemId;
 	private double subTotal;
 	private int quantity;
 	public int getQuantity() {
@@ -33,11 +33,11 @@ public class CartItem implements Serializable{
 	@JoinColumn(name="cartId")
 	Cart cart;
 
-	public int getCartItemId() {
+	public String getCartItemId() {
 		return cartItemId;
 	}
 
-	public void setCartItemId(int cartItemId) {
+	public void setCartItemId(String cartItemId) {
 		this.cartItemId = cartItemId;
 	}
 
