@@ -14,6 +14,7 @@ xmlns:beans="http://www.springframework.org/schema/beans"
          
         <intercept-url pattern="/" access="isAnonymous()" />
         <intercept-url pattern="/index" access="isAnonymous()" />
+        
         <intercept-url pattern="/showproducts" access="isAnonymous()" />
         <intercept-url pattern="/contact" access="isAnonymous()" />
         <intercept-url pattern="/register" access="isAnonymous()" />
@@ -22,7 +23,7 @@ xmlns:beans="http://www.springframework.org/schema/beans"
  		 <intercept-url pattern="/categoryForm" access="hasRole('ROLE_ADMIN')" />
  		  <intercept-url pattern="/cindex" access="hasRole('ROLE_ADMIN')" />
  		   <intercept-url pattern="/pindex" access="hasRole('ROLE_ADMIN')" />
- 		    <intercept-url pattern="/home" access="hasRole('ROLE_USER')" />
+ 		    <intercept-url pattern="/home" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
  		    <intercept-url pattern="/productForm" access="hasRole('ROLE_ADMIN')" />
  		        <intercept-url pattern="/viewCart" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
  		    <intercept-url pattern="/addItem/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />

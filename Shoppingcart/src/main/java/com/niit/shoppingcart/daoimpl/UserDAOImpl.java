@@ -76,6 +76,17 @@ return null;
 		
 	}
 
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		String s=user.getUserName();
+		user.setEnabled(true);
+		session.save(user);
+		session.flush();
+		session.close();
+		
+	}
+
 	
 	
 	

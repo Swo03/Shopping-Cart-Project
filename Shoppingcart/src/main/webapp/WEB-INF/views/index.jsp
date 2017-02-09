@@ -20,11 +20,16 @@
   }
   
    
-    footer {
+   footer {
+      background-color: black;
+      color: white;
+      padding: 15px;
      
-      padding: 25px;
-    }
+    bottom: 0;
+    right: 0;
+    width: 100%;
     
+    }
    
  
   </style>
@@ -92,7 +97,14 @@
 
 
 <footer class="container-fluid text-center">
-  <p >Shopping Cart</p>
+  <p >Mail Us:
+Flipkart Internet Private Limited,
+Ozone Manay Tech Park,
+#56/18 & 55/09, 7th Floor,
+Garvebhavipalya, Hosur Road,
+Bangalore - 560068,
+Karnataka, India.
+</p>
 </footer>
 
 

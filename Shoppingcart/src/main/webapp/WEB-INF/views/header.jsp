@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="Bootstrap/jquery/jquery.js"></script>
+<script src="jq/jquery-2.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
   <style >
    .navbar {
       margin-bottom: 0;
@@ -32,15 +35,19 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="${pageContext.request.contextPath}/home">Home</a></li>
         
         
         <c:forEach  items="${categoryList}"  var="category">
-        <li><a href="showCategoryWiseProducts/${category.categoryId}">${category.categoryName}</a></li>
+        <li><a href="${pageContext.request.contextPath}/showCategoryWiseProducts/${category.categoryId}">${category.categoryName}</a></li>
         </c:forEach>
+      
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+       
+      <li><a href="${pageContext.request.contextPath}/cindex"><span class="glyphicon glyphicon-wrench"></span> Manage Category</a></li>
+      <li><a href="${pageContext.request.contextPath}/pindex"><span class="glyphicon glyphicon-wrench"></span> Manage Product</a></li>
+        <li><a href="${pageContext.request.contextPath}/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="loginPage"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>

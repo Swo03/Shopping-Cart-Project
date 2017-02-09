@@ -12,7 +12,7 @@ public User get(String id);
 
 public User getUserbyId(String id);
 public boolean saveOrUpdate(User user);
-
+public void addUser(User user);
 
 
 }
