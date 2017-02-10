@@ -29,13 +29,13 @@ public class User implements Serializable{
 	private boolean enabled;
 	
 	
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="cartId")
-	Cart cart;
+	Cart cart;*/
 	
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="billingAddressId")
-	BillingAddress billingAddress;
+	BillingAddress billingAddress;*/
 	
 	@OneToMany(mappedBy="user")
 	List<UserOrder> orders;
@@ -45,22 +45,22 @@ public class User implements Serializable{
 	
 	
 
-	public Cart getCart() {
+	/*public Cart getCart() {
 		return cart;
 	}
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
-	}
+	}*/
 
-	public BillingAddress getBillingAddress() {
+	/*public BillingAddress getBillingAddress() {
 		return billingAddress;
 	}
 
 	public void setBillingAddress(BillingAddress billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-
+*/
 	public List<UserOrder> getOrders() {
 		return orders;
 	}

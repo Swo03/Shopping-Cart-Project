@@ -10,11 +10,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcart.dao.UserDAO;
+import com.niit.shoppingcart.model.Cart;
+/*import com.niit.shoppingcart.model.BillingAddress;*/
 import com.niit.shoppingcart.model.Category;
 import com.niit.shoppingcart.model.Product;
 import com.niit.shoppingcart.model.User;
 @Repository("userDao")
 @Transactional
+
 public class UserDAOImpl implements UserDAO{
 	
 public UserDAOImpl() {
@@ -81,9 +84,11 @@ return null;
 		Session session=sessionFactory.openSession();
 		String s=user.getUserName();
 		user.setEnabled(true);
+	//	user.setCart(new Cart());
 		session.save(user);
 		session.flush();
 		session.close();
+		
 		
 	}
 

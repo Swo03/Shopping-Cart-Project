@@ -37,9 +37,9 @@ public class UserOrder implements Serializable {
 	@JoinColumn(name="cartId")
 	Cart cart;
 	
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="billingAddressID")
-	BillingAddress billingAdress;
+	BillingAddress billingAdress;*/
 
 	public Date getDateOfOrder() {
 		return dateOfOrder;
@@ -65,13 +65,13 @@ public class UserOrder implements Serializable {
 		this.cart = cart;
 	}
 
-	public BillingAddress getBillingAdress() {
+/*	public BillingAddress getBillingAdress() {
 		return billingAdress;
 	}
 
 	public void setBillingAdress(BillingAddress billingAdress) {
 		this.billingAdress = billingAdress;
-	}
+	}*/
 	
 	
 

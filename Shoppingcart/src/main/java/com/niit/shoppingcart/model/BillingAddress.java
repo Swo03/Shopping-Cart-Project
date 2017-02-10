@@ -1,4 +1,4 @@
-package com.niit.shoppingcart.model;
+/*package com.niit.shoppingcart.model;
 
 import java.io.Serializable;
 
@@ -11,19 +11,14 @@ import javax.persistence.Id;
 public class BillingAddress implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int billingAddress;
+	private int billingAddressId;
 	private String streetNumber;
 	private String streetName;
 	private String city;
 	private String state;
 	private String country;
 	private int pin;
-	public int getBillingAddress() {
-		return billingAddress;
-	}
-	public void setBillingAddress(int billingAddress) {
-		this.billingAddress = billingAddress;
-	}
+	
 	public String getStreetNumber() {
 		return streetNumber;
 	}
@@ -60,6 +55,12 @@ public class BillingAddress implements Serializable {
 	public void setPin(int pin) {
 		this.pin = pin;
 	}
+	public int getBillingAddressId() {
+		return billingAddressId;
+	}
+	public void setBillingAddressId(int billingAddressId) {
+		this.billingAddressId = billingAddressId;
+	}
 	
 	
 	
@@ -67,3 +68,4 @@ public class BillingAddress implements Serializable {
 	
 
 }
+*/

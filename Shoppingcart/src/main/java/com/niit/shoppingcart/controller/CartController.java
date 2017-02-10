@@ -93,7 +93,7 @@ public class CartController {
 			Cart c1=cartDao.getCartByUserId(id);
 			System.out.println("G Tot"+c1.getCartId());
 			user=userDao.getUserbyId(id);
-			user.setCart(c1);
+			//user.setCart(c1);
 			userDao.saveOrUpdate(user);
 			cartDao.saveOrUpdate(c);
 			

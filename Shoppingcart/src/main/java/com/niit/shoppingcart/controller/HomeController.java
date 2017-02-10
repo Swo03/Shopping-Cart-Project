@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.shoppingcart.dao.CartDao;
 import com.niit.shoppingcart.dao.CategoryDao;
 import com.niit.shoppingcart.dao.ProductDao;
 import com.niit.shoppingcart.dao.UserDAO;
-import com.niit.shoppingcart.model.BillingAddress;
+/*import com.niit.shoppingcart.model.BillingAddress;*/
 import com.niit.shoppingcart.model.Cart;
 import com.niit.shoppingcart.model.Product;
 import com.niit.shoppingcart.model.User;
@@ -27,6 +28,8 @@ public class HomeController {
 	ProductDao  productDao;
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
+	CartDao cartDao;
 	@RequestMapping("/Test")
 	public String test()
 	{
@@ -75,6 +78,7 @@ public class HomeController {
 
 		return new ModelAndView("loginPage");
 	}
+	
 
 	@RequestMapping(value = "/register")
 	public ModelAndView register() {
@@ -83,10 +87,11 @@ public class HomeController {
 	}
 	@RequestMapping(value="/usave",method=RequestMethod.POST)
 	public ModelAndView usave(@ModelAttribute("user")User user,HttpServletRequest request){
-		BillingAddress  b=new BillingAddress();
-		user.setBillingAddress(b);
+		/*BillingAddress  b=new BillingAddress();
+		user.setBillingAddress(b);*/
 		Cart c=new Cart();
-		user.setCart(c);
+		cartDao.saveOrUpdate(c);
+		//user.setCart(c);
 		userDAO.addUser(user);
 		return new ModelAndView("redirect:/register");
 	}

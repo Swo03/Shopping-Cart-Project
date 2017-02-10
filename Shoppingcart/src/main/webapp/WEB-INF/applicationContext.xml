@@ -42,7 +42,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
                  <value>  com.niit.shoppingcart.model.Category</value>
                  <value>com.niit.shoppingcart.model.Product</value>
                   <value>com.niit.shoppingcart.model.User</value>
-                  <value>com.niit.shoppingcart.model.BillingAddress</value>
+                  <!-- <value>com.niit.shoppingcart.model.BillingAddress</value> -->
                   <value>com.niit.shoppingcart.model.Cart</value>
                   <value>com.niit.shoppingcart.model.CartItem</value>
                   <value>com.niit.shoppingcart.model.UserOrder</value>

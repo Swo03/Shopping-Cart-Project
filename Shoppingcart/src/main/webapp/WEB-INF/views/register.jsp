@@ -26,21 +26,17 @@ body {
 				<td>Password:</td>
 				<td><form:input path="password" type="password" name="password"/></td>
 			</tr>
-			<tr>
-				<td>Role:</td>
-				<td><form:input path="role" type="text" name="role" /></td>
-			
-			</tr>
+		
 
 			<tr>
 				<td>User Name</td>
 				<td><form:input path="userName" type="text" name="name"/></td>
 			</tr>
-			<tr><td><form:hidden path="billingAddress.billingAddress"/></td>
-			
+			<%-- <tr><td><form:hidden path="billingAddress.billingAddressId"/></td>
+			</tr> --%>
 			<tr>
 			</tr>
-			<tr><td><form:hidden path="cart.cartId"/></td>
+			<%-- <tr><td><form:hidden path="cart.cartId"/></td> --%>
 			
 			<tr>
 			</tr>
