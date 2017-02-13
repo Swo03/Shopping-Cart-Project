@@ -35,7 +35,8 @@
           <td><form:input path="productPrice" /></td>  
          </tr> 
          <tr>    
-          <td>Category Id :</td>    
+          <td>Category Id :</td>  
+            
           <td><form:input path="productCategory.categoryId" /></td>  
          </tr> 
          <tr>    
